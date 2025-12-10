@@ -1,0 +1,22 @@
+{
+  "name": "react-antd-admin-panel-workspace",
+  "version": "2.0.0",
+  "private": true,
+  "description": "React Antd Admin Panel v2 - Modern TypeScript admin panel builder",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter example dev",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "type-check": "pnpm -r type-check"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "dayjs": "^1.11.19",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

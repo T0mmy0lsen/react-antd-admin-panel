@@ -1,0 +1,47 @@
+﻿import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
+
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    lib: {
+      entry: {
+        index: resolve(__dirname, 'src/index.ts'),
+        'list/index': resolve(__dirname, 'src/list/index.ts'),
+        'form/index': resolve(__dirname, 'src/form/index.ts'),
+        'http/index': resolve(__dirname, 'src/http/index.ts'),
+        'hooks/index': resolve(__dirname, 'src/hooks/index.ts'),
+        'main/index': resolve(__dirname, 'src/main/index.ts'),
+        'section/index': resolve(__dirname, 'src/section/index.ts'),
+        'access/index': resolve(__dirname, 'src/access/index.ts'),
+        'formula/index': resolve(__dirname, 'src/formula/index.ts'),
+        'action/index': resolve(__dirname, 'src/action/index.ts'),
+      },
+      name: 'ReactAntdAdminPanel',
+      formats: ['es', 'cjs'],
+    },
+    rollupOptions: {
+      external: [
+        'react', 
+        'react-dom', 
+        'react/jsx-runtime', 
+        'antd', 
+        '@ant-design/icons',
+        'axios', 
+        'react-router-dom', 
+        'react-hook-form',
+        'dayjs',
+      ],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          antd: 'antd',
+        },
+      },
+    },
+    sourcemap: true,
+    minify: false,
+  },
+});

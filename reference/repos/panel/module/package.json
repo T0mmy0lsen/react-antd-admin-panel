@@ -1,0 +1,56 @@
+{
+  "name": "react-antd-admin-panel",
+  "version": "1.0.83",
+  "description": "Easy prototyping admin panel using React and Antd",
+  "author": "tool",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=18.17.1",
+    "npm": ">=8.3.2"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "patch": "tsc src/typescript/index.ts && git add . && git commit -a -m 'Patch' && npm run build && npm version patch"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@types/estree": "^1.0.1",
+    "@types/node": "^20.5.9",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "antd": "^5.8.6",
+    "array-move": "^4.0.0",
+    "axios": "^0.27.2",
+    "dayjs": "^1.11.9",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.46.1",
+    "react-router": "^6.15.0",
+    "react-router-dom": "^6.15.0",
+    "react-scripts": "^5.0.1",
+    "sass": "^1.66.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-json": "^5.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "rollup": "^3.28.1",
+    "rollup-plugin-sass": "^1.12.20",
+    "rollup-plugin-typescript2": "^0.35.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "typescript",
+    "npm"
+  ]
+}

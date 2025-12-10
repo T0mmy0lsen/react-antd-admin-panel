@@ -1,0 +1,6 @@
+
+.dynamicButton:hover {
+    background-color: var(--hoverBackgroundColor) !important;
+    color: var(--hoverTextColor) !important;
+    border-color: var(--hoverBorderColor) !important;
+}

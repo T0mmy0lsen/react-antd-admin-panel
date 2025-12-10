@@ -1,0 +1,1440 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000'
+paths:
+  /api/export/formularView:
+    get:
+      summary: "Get formular data\n\nThis endpoint returns the formular data."
+      operationId: getFormularDataThisEndpointReturnsTheFormularData
+      description: ''
+      parameters:
+        -
+          in: query
+          name: id
+          description: 'The id of the formular creator.'
+          example: '1'
+          required: true
+          schema:
+            type: string
+            description: 'The id of the formular creator.'
+            example: '1'
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'laravel.view_for_formular_creator_1' doesn't exist (Connection: mysql, SQL: SELECT * FROM `view_for_formular_creator_1`)"
+                  exception: Illuminate\Database\QueryException
+                  file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Database\Connection.php'
+                  line: 822
+                  trace:
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Database\Connection.php'
+                      line: 776
+                      function: runQueryCallback
+                      class: Illuminate\Database\Connection
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Database\Connection.php'
+                      line: 407
+                      function: run
+                      class: Illuminate\Database\Connection
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Database\DatabaseManager.php'
+                      line: 469
+                      function: select
+                      class: Illuminate\Database\Connection
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php'
+                      line: 355
+                      function: __call
+                      class: Illuminate\Database\DatabaseManager
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\app\Http\Controllers\ExportController.php'
+                      line: 32
+                      function: __callStatic
+                      class: Illuminate\Support\Facades\Facade
+                      type: '::'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Controller.php'
+                      line: 54
+                      function: formularView
+                      class: App\Http\Controllers\ExportController
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php'
+                      line: 43
+                      function: callAction
+                      class: Illuminate\Routing\Controller
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
+                      line: 259
+                      function: dispatch
+                      class: Illuminate\Routing\ControllerDispatcher
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
+                      line: 205
+                      function: runController
+                      class: Illuminate\Routing\Route
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                      line: 799
+                      function: run
+                      class: Illuminate\Routing\Route
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 141
+                      function: 'Illuminate\Routing\{closure}'
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php'
+                      line: 50
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Routing\Middleware\SubstituteBindings
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                      line: 159
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                      line: 125
+                      function: handleRequest
+                      class: Illuminate\Routing\Middleware\ThrottleRequests
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                      line: 87
+                      function: handleRequestUsingNamedLimiter
+                      class: Illuminate\Routing\Middleware\ThrottleRequests
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Routing\Middleware\ThrottleRequests
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Auth\Middleware\Authenticate.php'
+                      line: 57
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Auth\Middleware\Authenticate
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\sanctum\src\Http\Middleware\EnsureFrontendRequestsAreStateful.php'
+                      line: 25
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 141
+                      function: 'Laravel\Sanctum\Http\Middleware\{closure}'
+                      class: Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 116
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\sanctum\src\Http\Middleware\EnsureFrontendRequestsAreStateful.php'
+                      line: 24
+                      function: then
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 116
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                      line: 798
+                      function: then
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                      line: 777
+                      function: runRouteWithinStack
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                      line: 741
+                      function: runRoute
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                      line: 730
+                      function: dispatchToRoute
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                      line: 200
+                      function: dispatch
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 141
+                      function: 'Illuminate\Foundation\Http\{closure}'
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
+                      line: 21
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
+                      line: 31
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
+                      line: 21
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
+                      line: 40
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TrimStrings
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php'
+                      line: 27
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
+                      line: 99
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
+                      line: 62
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Http\Middleware\HandleCors
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
+                      line: 39
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Http\Middleware\TrustProxies
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 116
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                      line: 175
+                      function: then
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                      line: 144
+                      function: sendRequestThroughRouter
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                      line: 300
+                      function: handle
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                      line: 288
+                      function: callLaravelOrLumenRoute
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                      line: 91
+                      function: makeApiCall
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                      line: 44
+                      function: makeResponseCall
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                      line: 35
+                      function: makeResponseCallIfConditionsPass
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                      line: 236
+                      function: __invoke
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                      line: 163
+                      function: iterateThroughStrategies
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                      line: 95
+                      function: fetchResponses
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                      line: 125
+                      function: processRoute
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                      line: 72
+                      function: extractEndpointsInfoFromLaravelApp
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                      line: 50
+                      function: extractEndpointsInfoAndWriteToDisk
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
+                      line: 53
+                      function: get
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                      line: 36
+                      function: handle
+                      class: Knuckles\Scribe\Commands\GenerateDocumentation
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Container\Util.php'
+                      line: 41
+                      function: 'Illuminate\Container\{closure}'
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                      line: 93
+                      function: unwrapIfClosure
+                      class: Illuminate\Container\Util
+                      type: '::'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                      line: 35
+                      function: callBoundMethod
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Container\Container.php'
+                      line: 662
+                      function: call
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Console\Command.php'
+                      line: 211
+                      function: call
+                      class: Illuminate\Container\Container
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\symfony\console\Command\Command.php'
+                      line: 326
+                      function: execute
+                      class: Illuminate\Console\Command
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Console\Command.php'
+                      line: 180
+                      function: run
+                      class: Symfony\Component\Console\Command\Command
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\symfony\console\Application.php'
+                      line: 1096
+                      function: run
+                      class: Illuminate\Console\Command
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\symfony\console\Application.php'
+                      line: 324
+                      function: doRunCommand
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\symfony\console\Application.php'
+                      line: 175
+                      function: doRun
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
+                      line: 201
+                      function: run
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: 'C:\Users\Tommy\git\power\backend\artisan'
+                      line: 35
+                      function: handle
+                      class: Illuminate\Foundation\Console\Kernel
+                      type: '->'
+                properties:
+                  message:
+                    type: string
+                    example: "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'laravel.view_for_formular_creator_1' doesn't exist (Connection: mysql, SQL: SELECT * FROM `view_for_formular_creator_1`)"
+                  exception:
+                    type: string
+                    example: Illuminate\Database\QueryException
+                  file:
+                    type: string
+                    example: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Database\Connection.php'
+                  line:
+                    type: integer
+                    example: 822
+                  trace:
+                    type: array
+                    example:
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Database\Connection.php'
+                        line: 776
+                        function: runQueryCallback
+                        class: Illuminate\Database\Connection
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Database\Connection.php'
+                        line: 407
+                        function: run
+                        class: Illuminate\Database\Connection
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Database\DatabaseManager.php'
+                        line: 469
+                        function: select
+                        class: Illuminate\Database\Connection
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php'
+                        line: 355
+                        function: __call
+                        class: Illuminate\Database\DatabaseManager
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\app\Http\Controllers\ExportController.php'
+                        line: 32
+                        function: __callStatic
+                        class: Illuminate\Support\Facades\Facade
+                        type: '::'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Controller.php'
+                        line: 54
+                        function: formularView
+                        class: App\Http\Controllers\ExportController
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php'
+                        line: 43
+                        function: callAction
+                        class: Illuminate\Routing\Controller
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
+                        line: 259
+                        function: dispatch
+                        class: Illuminate\Routing\ControllerDispatcher
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
+                        line: 205
+                        function: runController
+                        class: Illuminate\Routing\Route
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                        line: 799
+                        function: run
+                        class: Illuminate\Routing\Route
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 141
+                        function: 'Illuminate\Routing\{closure}'
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php'
+                        line: 50
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Routing\Middleware\SubstituteBindings
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                        line: 159
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                        line: 125
+                        function: handleRequest
+                        class: Illuminate\Routing\Middleware\ThrottleRequests
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                        line: 87
+                        function: handleRequestUsingNamedLimiter
+                        class: Illuminate\Routing\Middleware\ThrottleRequests
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Routing\Middleware\ThrottleRequests
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Auth\Middleware\Authenticate.php'
+                        line: 57
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Auth\Middleware\Authenticate
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\sanctum\src\Http\Middleware\EnsureFrontendRequestsAreStateful.php'
+                        line: 25
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 141
+                        function: 'Laravel\Sanctum\Http\Middleware\{closure}'
+                        class: Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 116
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\sanctum\src\Http\Middleware\EnsureFrontendRequestsAreStateful.php'
+                        line: 24
+                        function: then
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 116
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                        line: 798
+                        function: then
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                        line: 777
+                        function: runRouteWithinStack
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                        line: 741
+                        function: runRoute
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                        line: 730
+                        function: dispatchToRoute
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                        line: 200
+                        function: dispatch
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 141
+                        function: 'Illuminate\Foundation\Http\{closure}'
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
+                        line: 21
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
+                        line: 31
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
+                        line: 21
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
+                        line: 40
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TrimStrings
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php'
+                        line: 27
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
+                        line: 99
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
+                        line: 62
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Http\Middleware\HandleCors
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
+                        line: 39
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Http\Middleware\TrustProxies
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 116
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                        line: 175
+                        function: then
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                        line: 144
+                        function: sendRequestThroughRouter
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                        line: 300
+                        function: handle
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                        line: 288
+                        function: callLaravelOrLumenRoute
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                        line: 91
+                        function: makeApiCall
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                        line: 44
+                        function: makeResponseCall
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                        line: 35
+                        function: makeResponseCallIfConditionsPass
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                        line: 236
+                        function: __invoke
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                        line: 163
+                        function: iterateThroughStrategies
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                        line: 95
+                        function: fetchResponses
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                        line: 125
+                        function: processRoute
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                        line: 72
+                        function: extractEndpointsInfoFromLaravelApp
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                        line: 50
+                        function: extractEndpointsInfoAndWriteToDisk
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
+                        line: 53
+                        function: get
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                        line: 36
+                        function: handle
+                        class: Knuckles\Scribe\Commands\GenerateDocumentation
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Container\Util.php'
+                        line: 41
+                        function: 'Illuminate\Container\{closure}'
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                        line: 93
+                        function: unwrapIfClosure
+                        class: Illuminate\Container\Util
+                        type: '::'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                        line: 35
+                        function: callBoundMethod
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Container\Container.php'
+                        line: 662
+                        function: call
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Console\Command.php'
+                        line: 211
+                        function: call
+                        class: Illuminate\Container\Container
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\symfony\console\Command\Command.php'
+                        line: 326
+                        function: execute
+                        class: Illuminate\Console\Command
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Console\Command.php'
+                        line: 180
+                        function: run
+                        class: Symfony\Component\Console\Command\Command
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\symfony\console\Application.php'
+                        line: 1096
+                        function: run
+                        class: Illuminate\Console\Command
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\symfony\console\Application.php'
+                        line: 324
+                        function: doRunCommand
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\symfony\console\Application.php'
+                        line: 175
+                        function: doRun
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
+                        line: 201
+                        function: run
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: 'C:\Users\Tommy\git\power\backend\artisan'
+                        line: 35
+                        function: handle
+                        class: Illuminate\Foundation\Console\Kernel
+                        type: '->'
+                    items:
+                      type: object
+                      properties:
+                        file:
+                          type: string
+                          example: 'C:\Users\Tommy\git\power\backend\vendor\laravel\framework\src\Illuminate\Database\Connection.php'
+                        line:
+                          type: integer
+                          example: 776
+                        function:
+                          type: string
+                          example: runQueryCallback
+                        class:
+                          type: string
+                          example: Illuminate\Database\Connection
+                        type:
+                          type: string
+                          example: '->'
+      tags:
+        - Formular
+  /api/import/value:
+    get:
+      summary: 'Fetch one'
+      operationId: fetchOne
+      description: ''
+      parameters:
+        -
+          in: query
+          name: value_id
+          description: 'The ID of the value.'
+          example: 10
+          required: true
+          schema:
+            type: integer
+            description: 'The ID of the value.'
+            example: 10
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"id\": 1,\n\"value_set_id\": 1,\n\"value\": \"En dejlig dag\",\n\"description\": \"Hvis din dag nu har været ekstra god, så kan du vælge denne værdi.\"\n\"data\": [\n {\n  \"key\": \"label\",\n  \"value\": \"En dejlig dag\"\n },\n],\ncreated_at: \"2021-01-01T00:00:00.000000Z\",\nupdated_at: \"2021-01-01T00:00:00.000000Z\",\ndeleted_at: null\n}"
+      tags:
+        - Value
+  /api/import/valueSearch:
+    get:
+      summary: Search
+      operationId: search
+      description: ''
+      parameters:
+        -
+          in: query
+          name: q
+          description: 'The search query.'
+          example: Ja
+          required: false
+          schema:
+            type: string
+            description: 'The search query.'
+            example: Ja
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "[{\n\"id\": 1,\n\"value_set_id\": 1,\n\"value\": \"Ja\",\n\"description\": \"Angiver at noget er sandt.\"\n\"data\": [\n {\n  \"key\": \"label\",\n  \"value\": \"Ja\"\n },\n],\ncreated_at: \"2021-01-01T00:00:00.000000Z\",\nupdated_at: \"2021-01-01T00:00:00.000000Z\",\ndeleted_at: null\n}]"
+      tags:
+        - Value
+  /api/import/values:
+    get:
+      summary: 'Fetch all'
+      operationId: fetchAll
+      description: ''
+      parameters:
+        -
+          in: query
+          name: value_set_id
+          description: 'The ID of the value set.'
+          example: 1
+          required: true
+          schema:
+            type: integer
+            description: 'The ID of the value set.'
+            example: 1
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "[{\n\"id\": 1,\n\"value_set_id\": 1,\n\"value\": \"Ja\",\n\"description\": \"Angiver at noget er sandt.\"\n\"data\": [\n {\n  \"key\": \"label\",\n  \"value\": \"Ja\"\n },\n],\ncreated_at: \"2021-01-01T00:00:00.000000Z\",\nupdated_at: \"2021-01-01T00:00:00.000000Z\",\ndeleted_at: null\n}]"
+      tags:
+        - Value
+  /api/import/valuesCreate:
+    post:
+      summary: 'Create many'
+      operationId: createMany
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"id\": 1,\n\"value_set_id\": 1,\n\"value\": \"En dejlig dag\",\n\"description\": \"Hvis din dag nu har været ekstra god, så kan du vælge denne værdi.\"\n\"data\": [{ \"label\": \"En dejlig dag\" }],\ncreated_at: \"2021-01-01T00:00:00.000000Z\",\nupdated_at: \"2021-01-01T00:00:00.000000Z\",\ndeleted_at: null\n}"
+      tags:
+        - Value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                values:
+                  type: array
+                  description: 'The values of the value set.'
+                  example:
+                    -
+                      label: 'Test Value'
+                      description: 'This is a test value'
+                  items:
+                    type: string
+                value_set_id:
+                  type: integer
+                  description: 'The ID of the value set.'
+                  example: 1
+              required:
+                - values
+                - value_set_id
+  /api/import/valuesUpdate:
+    post:
+      summary: 'Update many'
+      operationId: updateMany
+      description: ''
+      parameters:
+        -
+          in: query
+          name: value_set_id
+          description: 'The ID of the value set.'
+          example: 1
+          required: true
+          schema:
+            type: integer
+            description: 'The ID of the value set.'
+            example: 1
+      responses:
+        204:
+          description: ''
+      tags:
+        - Value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                values:
+                  type: array
+                  description: 'The values to update. Each object in the array should have an `id` (the ID of the value to update), `label` (the new label), and `description` (the new description).'
+                  example:
+                    -
+                      id: 1
+                      label: 'Updated Value'
+                      description: 'This is an updated test value'
+                  items:
+                    type: string
+              required:
+                - values
+  /api/import/valuesDelete:
+    post:
+      summary: 'Delete many'
+      operationId: deleteMany
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+      tags:
+        - Value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  description: 'The IDs of the values to delete.'
+                  example:
+                    - 1
+                    - 2
+                    - 3
+                  items:
+                    type: string
+              required:
+                - ids
+  /api/import/valueSet:
+    get:
+      summary: 'Fetch one'
+      operationId: fetchOne
+      description: ''
+      parameters:
+        -
+          in: query
+          name: value_set_id
+          description: 'The ID of the value set.'
+          example: 1
+          required: true
+          schema:
+            type: integer
+            description: 'The ID of the value set.'
+            example: 1
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 1
+                  name: 'Test Value Set'
+                  description: 'This is a test value set'
+                  config:
+                    -
+                      key: label
+                      value: Label
+                    -
+                      key: description
+                      value: Description
+                  system: false
+                  created_at: '2021-01-01T00:00:00.000000Z'
+                  updated_at: '2021-01-01T00:00:00.000000Z'
+                  deleted_at: null
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: 'Test Value Set'
+                  description:
+                    type: string
+                    example: 'This is a test value set'
+                  config:
+                    type: array
+                    example:
+                      -
+                        key: label
+                        value: Label
+                      -
+                        key: description
+                        value: Description
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          example: label
+                        value:
+                          type: string
+                          example: Label
+                  system:
+                    type: boolean
+                    example: false
+                  created_at:
+                    type: string
+                    example: '2021-01-01T00:00:00.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2021-01-01T00:00:00.000000Z'
+                  deleted_at:
+                    type: string
+                    example: null
+      tags:
+        - 'Value Sets'
+  /api/import/valueSetSearch:
+    get:
+      summary: Search
+      operationId: search
+      description: ''
+      parameters:
+        -
+          in: query
+          name: q
+          description: 'The search query.'
+          example: Ja
+          required: false
+          schema:
+            type: string
+            description: 'The search query.'
+            example: Ja
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    name: 'Test Value Set'
+                    description: 'This is a test value set'
+                    config:
+                      -
+                        key: label
+                        value: Label
+                      -
+                        key: description
+                        value: Description
+                    system: false
+                    created_at: '2021-01-01T00:00:00.000000Z'
+                    updated_at: '2021-01-01T00:00:00.000000Z'
+                    deleted_at: null
+      tags:
+        - 'Value Sets'
+  /api/import/valueSets:
+    get:
+      summary: 'Fetch all'
+      operationId: fetchAll
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    name: 'Test Value Set'
+                    description: 'This is a test value set'
+                    config:
+                      -
+                        key: label
+                        value: Label
+                      -
+                        key: description
+                        value: Description
+                    system: false
+                    created_at: '2021-01-01T00:00:00.000000Z'
+                    updated_at: '2021-01-01T00:00:00.000000Z'
+                    deleted_at: null
+      tags:
+        - 'Value Sets'
+  /api/import/valueSetCreate:
+    post:
+      summary: 'Create one'
+      operationId: createOne
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"id\": 1,\n\"name\": \"Test Value Set\",\n\"description\": \"This is a test value set\",\n\"config\": [{ \"headers\": [\"Label\", \"Description\"] }]}],\n\"system\": false,\n\"created_at\": \"2021-01-01T00:00:00.000000Z\",\n\"updated_at\": \"2021-01-01T00:00:00.000000Z\",\n\"deleted_at\": null\n}"
+      tags:
+        - 'Value Sets'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the value set.'
+                  example: 'Test Value Set'
+                description:
+                  type: string
+                  description: 'The description of the value set.'
+                  example: 'This is a test value set'
+                config:
+                  type: object
+                  description: ''
+                  example:
+                    headers:
+                      - Label
+                      - Description
+                  properties:
+                    headers:
+                      type: array
+                      description: 'The configuration of the value set.'
+                      example:
+                        - Label
+                        - Description
+                      items:
+                        type: string
+              required:
+                - name
+                - description
+  /api/import/valueSetUpdate:
+    post:
+      summary: 'Update one'
+      operationId: updateOne
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"id\": 1,\n\"name\": \"Test Value Set\",\n\"description\": \"This is a test value set\",\n\"config\": { \"headers\": [\"Label\", \"Description\"] }]}],\n\"system\": false,\n\"created_at\": \"2021-01-01T00:00:00.000000Z\",\n\"updated_at\": \"2021-01-01T00:00:00.000000Z\",\n\"deleted_at\": null\n}"
+      tags:
+        - 'Value Sets'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the value set.'
+                  example: 'Test Value Set'
+                description:
+                  type: string
+                  description: 'The description of the value set.'
+                  example: 'This is a test value set'
+                id:
+                  type: integer
+                  description: 'The ID of the value set.'
+                  example: 1
+                config:
+                  type: object
+                  description: ''
+                  example:
+                    headers:
+                      - Label
+                      - Description
+                  properties:
+                    headers:
+                      type: array
+                      description: 'The configuration of the value set.'
+                      example:
+                        - Label
+                        - Description
+                      items:
+                        type: string
+              required:
+                - name
+                - description
+                - id
+  /api/import/valueSetDelete:
+    post:
+      summary: 'Delete one'
+      operationId: deleteOne
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+      tags:
+        - 'Value Sets'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 'The ID of the value set.'
+                  example: 1
+              required:
+                - id
+tags:
+  -
+    name: Formular
+    description: ''
+  -
+    name: Value
+    description: ''
+  -
+    name: 'Value Sets'
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []

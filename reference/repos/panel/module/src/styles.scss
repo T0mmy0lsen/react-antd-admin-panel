@@ -1,0 +1,43 @@
+@import '~antd/dist/antd.css';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+.rc-virtual-list-scrollbar {
+  display: inherit !important;
+}
+
+.ant-select-auto-complete .ant-select-clear {
+  right: 54px;
+}
+
+.site-layout-content {
+  background: #fafafa !important;
+}
+
+.site-layout {
+  background: #fff !important;
+}
+
+.rowClassName-deleted > td {
+  background: rgba(251, 0, 1, .05) !important;
+}
+
+.rowClassName-deleted:hover > td {
+  background: rgba(251, 0, 1, .05) !important;
+}
+
+.tbody > tr:nth-child(1) > td.ant-table-cell.ant-table-row-expand-icon-cell {
+  border-right: none !important;
+}

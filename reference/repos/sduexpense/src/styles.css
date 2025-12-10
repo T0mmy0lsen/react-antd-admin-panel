@@ -1,0 +1,88 @@
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+.ant-select-auto-complete .ant-select-clear {
+  right: 54px;
+}
+
+.site-layout-content {
+  background: #fafafa !important;
+}
+
+.site-layout {
+  background: #fff !important;
+}
+
+.rowClassName-deleted > td {
+  background: rgba(251, 0, 1, .05) !important;
+}
+
+.rowClassName-deleted:hover > td {
+  background: rgba(251, 0, 1, .05) !important;
+}
+
+.site-input-group-wrapper .site-input-split {
+  background-color: #fff;
+}
+
+.site-input-group-wrapper .site-input-right {
+  border-left-width: 0;
+}
+
+.site-input-group-wrapper .site-input-right:hover,
+.site-input-group-wrapper .site-input-right:focus {
+  border-left-width: 1px;
+}
+
+.site-input-group-wrapper .ant-input-rtl.site-input-right {
+  border-right-width: 0;
+}
+
+.site-input-group-wrapper .ant-input-rtl.site-input-right:hover,
+.site-input-group-wrapper .ant-input-rtl.site-input-right:focus {
+  border-right-width: 1px;
+}
+
+.ant-layout-sider {
+  background: rgba(255, 255, 255, 1) !important;
+}
+
+.listRowAutocomplete {
+  min-width: 800px;
+}
+
+.listRowAutocompleteSmall {
+  min-width: 400px;
+}
+
+.listRowAutocompleteRed > div {
+    background: rgba(231, 122, 122, 0.2) !important;
+    border-color: rgba(231, 122, 122, 0.2) !important;
+}
+
+.ant-table-cell {
+  vertical-align: top !important;
+  padding-top: 20px !important;
+}
+
+.cellSelectInnerWidth {
+  min-width: 200px;
+}
+
+.ant-upload-list-item-actions {
+  min-width: 48px !important;
+  width: 48px !important;
+}
+

@@ -1,0 +1,29 @@
+.custom-button-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: 240px; /* Adjust size as needed */
+    border-radius: 10px;
+    border: 1px solid #e8e8e8;
+    background-color: #fff;
+    padding: 16px;
+}
+
+.custom-button-card .ant-btn-icon-only {
+    margin-bottom: 8px;
+}
+
+.custom-card-content {
+    text-align: left;
+}
+
+.custom-card-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.custom-card-subtext {
+    font-size: 12px;
+}

@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('formular_state_values', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('formular_state_id')->constrained('formular_states');
+            $table->foreignId('config_id')->nullable()->constrained('configs');
+            $table->foreignId('value_id')->nullable()->constrained('values');
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('formular_state_configs');
+    }
+};
