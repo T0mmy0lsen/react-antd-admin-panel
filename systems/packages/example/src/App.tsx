@@ -8,10 +8,12 @@ import {
   ApiOutlined,
   ControlOutlined,
   FormOutlined,
-  CodeOutlined
+  CodeOutlined,
+  SafetyCertificateOutlined
 } from '@ant-design/icons';
 import { MainProvider, AppLayout } from 'react-antd-admin-panel';
 import type { MainConfig, MainInstance, RouteConfig } from 'react-antd-admin-panel';
+import { createAzureAuthConfig, AzureAuthProvider } from 'react-antd-admin-panel/auth';
 import HomePage from './pages/HomePage';
 import UserListPage from './pages/UserListPage';
 import AddUserPage from './pages/AddUserPage';
@@ -20,6 +22,15 @@ import HttpDemoPage from './pages/HttpDemoPage';
 import MainDemoPage from './pages/MainDemoPage';
 import FormControlsPage from './pages/FormControlsPage';
 import HooksDemoPage from './pages/HooksDemoPage';
+import AzureAuthDemoPage from './pages/AzureAuthDemoPage';
+
+// Azure AD configuration - using SDU Expense LOCAL setup as default
+const azureConfig = createAzureAuthConfig({
+  clientId: import.meta.env.VITE_AZURE_CLIENT_ID || '14e58560-ce8f-4309-83cc-b9b78ca2b39c',
+  authority: import.meta.env.VITE_AZURE_AUTHORITY || 'https://login.microsoftonline.com/9a97c27d-b83e-4694-b353-54bdbf18ab5b',
+  scopes: ['api://e945a1ba-85ec-4ea5-81cc-620d2221d920/zExpense_User'],
+  redirectUri: import.meta.env.VITE_AZURE_REDIRECT_URI || 'http://localhost:3000',
+});
 
 // Define the app configuration using Main
 const appConfig: MainConfig = {
@@ -91,6 +102,11 @@ const appConfig: MainConfig = {
       icon: <UnorderedListOutlined />,
       title: 'Advanced List',
     },
+    '/azure-auth': {
+      component: AzureAuthDemoPage,
+      icon: <SafetyCertificateOutlined />,
+      title: 'Azure Auth',
+    },
   },
 };
 
@@ -115,9 +131,11 @@ function AppContent() {
 function App() {
   return (
     <ConfigProvider>
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
+      <AzureAuthProvider config={azureConfig}>
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </AzureAuthProvider>
     </ConfigProvider>
   );
 }

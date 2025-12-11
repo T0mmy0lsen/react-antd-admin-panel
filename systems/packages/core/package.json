@@ -61,6 +61,11 @@
       "types": "./dist/testing/index.d.ts",
       "import": "./dist/testing/index.js",
       "require": "./dist/testing/index.cjs"
+    },
+    "./auth": {
+      "types": "./dist/auth/index.d.ts",
+      "import": "./dist/auth/index.js",
+      "require": "./dist/auth/index.cjs"
     }
   },
   "sideEffects": false,
@@ -79,10 +84,20 @@
   },
   "peerDependencies": {
     "@ant-design/icons": "^6.0.0",
+    "@azure/msal-browser": "^3.16.0",
+    "@azure/msal-react": "^2.0.18",
     "antd": "^6.1.0",
     "dayjs": "^1.11.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@azure/msal-browser": {
+      "optional": true
+    },
+    "@azure/msal-react": {
+      "optional": true
+    }
   },
   "dependencies": {
     "axios": "^1.7.0",
@@ -90,6 +105,8 @@
     "react-router-dom": "^7.1.0"
   },
   "devDependencies": {
+    "@azure/msal-browser": "^4.27.0",
+    "@azure/msal-react": "^3.0.23",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/blocks": "^8.6.14",
     "@storybook/react": "^8.6.14",
