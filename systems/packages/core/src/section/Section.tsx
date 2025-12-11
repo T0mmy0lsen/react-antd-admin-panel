@@ -194,8 +194,9 @@ export class Section extends BaseBuilder<SectionConfig> {
 
 /**
  * SectionComponent - React component that renders a Section builder
+ * Wrapped with React.memo to prevent unnecessary re-renders
  */
-const SectionComponent: React.FC<{ section: Section }> = ({ section }) => {
+const SectionComponent = React.memo<{ section: Section }>(({ section }) => {
   if (section._config.hidden) {
     return null;
   }
@@ -256,4 +257,4 @@ const SectionComponent: React.FC<{ section: Section }> = ({ section }) => {
   }
 
   return <>{content}</>;
-};
+});

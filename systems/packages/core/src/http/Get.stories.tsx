@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Card, List, Spin, Alert } from 'antd';
 import { Get } from './Get';
 
@@ -39,7 +39,7 @@ export const BasicUsage: StoryObj = {
         .onCatch((err) => setError(err.message))
         .onFinally(() => setLoading(false));
 
-      get.fetch();
+      get.execute();
     }, []);
 
     if (loading) return <Spin />;
@@ -65,7 +65,9 @@ export const WithParams: StoryObj = {
   .target('/api/users')
   .params({ page: 1, limit: 10, search: 'john' })
   .headers({ 'X-Custom-Header': 'value' })
-  .onThen((users) => console.log(users));`;
+  .onThen((users) => console.log(users));
+
+get.execute();`;
 
     return (
       <Card title="Get with Parameters">

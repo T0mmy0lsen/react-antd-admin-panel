@@ -12,6 +12,7 @@ interface User {
   name: string;
   email: string;
   avatar: string;
+  createdAt?: string;
 }
 
 /**
@@ -80,7 +81,7 @@ function HttpDemoPage() {
     setLoading(true);
     setError(null);
 
-    await new Post<User>()
+    await new Post<Omit<User, 'id'>, User>()
       .target(API_URL)
       .body({
         name: userName,
@@ -107,7 +108,7 @@ function HttpDemoPage() {
     setLoading(true);
     setError(null);
 
-    await new Post<User>()
+    await new Post<Partial<User>, User>()
       .target(`${API_URL}/1`)
       .method('PUT')
       .body({

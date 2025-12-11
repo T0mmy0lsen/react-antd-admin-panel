@@ -79,6 +79,7 @@ export class Action {
   private _key?: string;
   private _label?: string;
   private _icon?: ReactNode;
+  private _tooltip?: string;
   private _type: ActionType = 'submit';
   private _buttonType: ButtonType = 'default';
   private _danger = false;
@@ -136,6 +137,21 @@ export class Action {
    */
   getIcon(): ReactNode {
     return this._icon;
+  }
+
+  /**
+   * Set tooltip text (also used as aria-label for icon-only buttons)
+   */
+  tooltip(value: string): this {
+    this._tooltip = value;
+    return this;
+  }
+
+  /**
+   * Get tooltip text
+   */
+  getTooltip(): string | undefined {
+    return this._tooltip;
   }
 
   /**

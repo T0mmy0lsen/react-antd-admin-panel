@@ -194,6 +194,22 @@ import { Section } from 'react-antd-admin-panel/section';
 import { AccessGuard } from 'react-antd-admin-panel/access';
 import { Formula } from 'react-antd-admin-panel/formula';
 import { ActionButton } from 'react-antd-admin-panel/action';
+import { createMockMain, createMockList } from 'react-antd-admin-panel/testing';
+```
+
+## Testing
+
+The library provides testing utilities for unit and integration tests. See the [Testing Guide](./docs/testing-guide.md) for detailed documentation.
+
+```tsx
+import { createMockMain, createMockList, createMockHttp } from 'react-antd-admin-panel/testing';
+
+// Create a mock Main context for testing
+const { wrapper, mockNavigate } = createMockMain({
+  user: { id: '1', name: 'Test User', role: 'admin' },
+});
+
+render(<MyComponent />, { wrapper });
 ```
 
 ## Peer Dependencies

@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Card, List, Spin, Alert, Button, Space } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 import { useGet } from './useGet';
-import { MainProvider } from '../main/MainContext';
 
 interface User {
   id: number;
@@ -14,13 +12,6 @@ interface User {
 const meta: Meta = {
   title: 'Hooks/useGet',
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <MainProvider config={{ pathToApi: 'https://jsonplaceholder.typicode.com' }}>
-        <Story />
-      </MainProvider>
-    ),
-  ],
   parameters: {
     docs: {
       description: {
@@ -37,9 +28,9 @@ export default meta;
  */
 export const BasicUsage: StoryObj = {
   render: () => {
-    const { data, loading, error, refetch } = useGet<User[]>({
-      target: '/users',
-      autoFetch: true,
+    const { data, loading, error, execute } = useGet<User[]>({
+      url: '/users',
+      immediate: true,
     });
 
     if (loading) return <Spin />;
@@ -48,10 +39,10 @@ export const BasicUsage: StoryObj = {
     return (
       <Card 
         title="Users" 
-        extra={<Button icon={<ReloadOutlined />} onClick={() => refetch()}>Refresh</Button>}
+        extra={<Button icon={<ReloadOutlined />} onClick={() => execute()}>Refresh</Button>}
       >
         <List
-          dataSource={data?.slice(0, 5)}
+          dataSource={data?.slice(0, 3)}
           renderItem={(user) => (
             <List.Item>{user.name} - {user.email}</List.Item>
           )}
@@ -62,28 +53,22 @@ export const BasicUsage: StoryObj = {
 };
 
 /**
- * Manual fetch control
+ * Manual fetch with useGet
  */
 export const ManualFetch: StoryObj = {
   render: () => {
-    const { data, loading, fetch } = useGet<User[]>({
-      target: '/users',
-      autoFetch: false,
+    const { data, loading, execute } = useGet<User[]>({
+      url: '/users',
+      immediate: false,
     });
 
     return (
       <Card title="Manual Fetch">
         <Space direction="vertical">
-          <Button type="primary" onClick={() => fetch()} loading={loading}>
-            Load Users
+          <Button onClick={() => execute()} loading={loading}>
+            Fetch Users
           </Button>
-          {data && (
-            <List
-              size="small"
-              dataSource={data.slice(0, 3)}
-              renderItem={(user) => <List.Item>{user.name}</List.Item>}
-            />
-          )}
+          {data && <Alert type="success" message={`Loaded ${data.length} users`} />}
         </Space>
       </Card>
     );

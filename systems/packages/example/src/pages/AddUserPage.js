@@ -96,7 +96,7 @@ function AddUserPage() {
         { label: 'Regular User', value: 'user' },
         { label: 'Guest', value: 'guest' },
     ])
-        .onChange((value) => updateField('role', value))))
+        .onChange((value) => updateField('role', Array.isArray(value) ? value[0] : value))))
         .add(new Section()
         .col(8)
         .add(new DatePicker()

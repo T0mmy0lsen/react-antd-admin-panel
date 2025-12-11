@@ -1,4 +1,4 @@
-﻿# Discovery Session 3: Consolidation Analysis & Best Practices
+# Discovery Session 3: Consolidation Analysis & Best Practices
 
 **Status:**  IN PROGRESS  
 **Started:** December 9, 2025  

@@ -1,6 +1,6 @@
 {
   "name": "create-raap-app",
-  "version": "1.0.0",
+  "version": "2.0.2",
   "description": "CLI to scaffold React Antd Admin Panel projects",
   "type": "module",
   "bin": {

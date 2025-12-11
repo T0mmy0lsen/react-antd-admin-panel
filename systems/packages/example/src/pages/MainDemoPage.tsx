@@ -75,19 +75,19 @@ function MainDemoPage() {
             <Text strong>Update User:</Text>
             <Space style={{ marginTop: 8 }}>
               <Button 
-                onClick={() => userState.set({ ...currentUser, role: 'admin' })}
+                onClick={() => currentUser && userState.set({ ...currentUser, role: 'admin' })}
                 disabled={userRole === 'admin'}
               >
                 Set Admin Role
               </Button>
               <Button 
-                onClick={() => userState.set({ ...currentUser, role: 'user' })}
+                onClick={() => currentUser && userState.set({ ...currentUser, role: 'user' })}
                 disabled={userRole === 'user'}
               >
                 Set User Role
               </Button>
               <Button 
-                onClick={() => userState.set({ ...currentUser, role: 'guest' })}
+                onClick={() => currentUser && userState.set({ ...currentUser, role: 'guest' })}
                 disabled={userRole === 'guest'}
               >
                 Set Guest Role

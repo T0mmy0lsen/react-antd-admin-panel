@@ -131,7 +131,7 @@ function AddUserPage() {
               { label: 'Regular User', value: 'user' },
               { label: 'Guest', value: 'guest' },
             ])
-            .onChange((value: 'admin' | 'user' | 'guest') => updateField('role', value))
+            .onChange((value) => updateField('role', Array.isArray(value) ? value[0] : value))
         )
     )
     .add(

@@ -156,6 +156,7 @@ export function ActionButton({
       onClick={handleClick}
       className={className}
       size={size}
+      aria-label={!action.getLabel() && action.getIcon() ? action.getTooltip() || 'Action button' : undefined}
     >
       {action.getLabel()}
     </Button>

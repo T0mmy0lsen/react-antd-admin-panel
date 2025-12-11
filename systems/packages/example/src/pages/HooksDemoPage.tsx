@@ -271,7 +271,7 @@ function UseFormDemo() {
         <Form.Item 
           label="Username" 
           validateStatus={errors.username ? 'error' : ''} 
-          help={errors.username}
+          help={errors.username?.message}
         >
           <Input 
             value={values.username} 
@@ -297,7 +297,7 @@ function UseFormDemo() {
           >
             Submit
           </Button>
-          <Button onClick={reset} icon={<CloseOutlined />}>Reset</Button>
+          <Button onClick={() => reset()} icon={<CloseOutlined />}>Reset</Button>
         </Space>
 
         <div style={{ marginTop: 12 }}>

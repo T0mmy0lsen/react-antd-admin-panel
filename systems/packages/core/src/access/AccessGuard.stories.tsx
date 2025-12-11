@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, Button, Alert, Space } from 'antd';
 import { AccessGuard } from './Protected';
-import { MainProvider } from '../main/MainContext';
+import { useMain } from '../main/MainContext';
 
 const meta: Meta = {
   title: 'Access/AccessGuard',
@@ -18,15 +18,21 @@ const meta: Meta = {
 
 export default meta;
 
+// Helper to set user for demo purposes
+const SetUser = ({ role, permissions, children }: { role: string; permissions: string[]; children: React.ReactNode }) => {
+  const main = useMain();
+  useEffect(() => {
+    main.User().set({ id: '1', name: 'Demo User', role, permissions });
+  }, [main, role, permissions]);
+  return <>{children}</>;
+};
+
 /**
  * Role-based access control
  */
 export const RoleBased: StoryObj = {
   render: () => (
-    <MainProvider 
-      config={{ pathToApi: '/api' }}
-      initialUser={{ id: '1', name: 'Admin', role: 'admin', permissions: [] }}
-    >
+    <SetUser role="admin" permissions={[]}>
       <Card title="Role-Based Access">
         <Space direction="vertical">
           <AccessGuard role="admin">
@@ -38,7 +44,7 @@ export const RoleBased: StoryObj = {
           </AccessGuard>
         </Space>
       </Card>
-    </MainProvider>
+    </SetUser>
   ),
 };
 
@@ -47,10 +53,7 @@ export const RoleBased: StoryObj = {
  */
 export const PermissionBased: StoryObj = {
   render: () => (
-    <MainProvider 
-      config={{ pathToApi: '/api' }}
-      initialUser={{ id: '1', name: 'User', role: 'user', permissions: ['users.read', 'users.edit'] }}
-    >
+    <SetUser role="user" permissions={['users.read', 'users.edit']}>
       <Card title="Permission-Based Access">
         <Space direction="vertical">
           <AccessGuard permission="users.read">
@@ -62,7 +65,7 @@ export const PermissionBased: StoryObj = {
           </AccessGuard>
         </Space>
       </Card>
-    </MainProvider>
+    </SetUser>
   ),
 };
 
@@ -71,15 +74,12 @@ export const PermissionBased: StoryObj = {
  */
 export const MultipleRoles: StoryObj = {
   render: () => (
-    <MainProvider 
-      config={{ pathToApi: '/api' }}
-      initialUser={{ id: '1', name: 'Manager', role: 'manager', permissions: [] }}
-    >
+    <SetUser role="manager" permissions={[]}>
       <Card title="Multiple Roles (Any Match)">
         <AccessGuard roles={['admin', 'manager']}>
           <Alert type="info" message="Visible to admins OR managers" />
         </AccessGuard>
       </Card>
-    </MainProvider>
+    </SetUser>
   ),
 };

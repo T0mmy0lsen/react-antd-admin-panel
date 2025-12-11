@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, Button, Input, Space, message, Alert } from 'antd';
 import { usePost } from './usePost';
-import { MainProvider } from '../main/MainContext';
 
 interface UserInput {
   name: string;
@@ -17,13 +16,6 @@ interface UserResponse {
 const meta: Meta = {
   title: 'Hooks/usePost',
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <MainProvider config={{ pathToApi: 'https://jsonplaceholder.typicode.com' }}>
-        <Story />
-      </MainProvider>
-    ),
-  ],
   parameters: {
     docs: {
       description: {
@@ -36,42 +28,32 @@ const meta: Meta = {
 export default meta;
 
 /**
- * Basic usePost for form submission
+ * Basic POST request
  */
 export const BasicUsage: StoryObj = {
   render: () => {
     const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-
-    const { execute, loading, error, data } = usePost<UserInput, UserResponse>({
-      target: '/users',
-      onSuccess: (user) => {
-        message.success(`Created user with ID: ${user.id}`);
-      },
+    const { execute, submitting, data } = usePost<UserInput, UserResponse>({
+      url: '/users',
+      onSuccess: () => message.success('User created!'),
     });
-
-    const handleSubmit = () => {
-      execute({ name, email });
-    };
 
     return (
       <Card title="Create User">
         <Space direction="vertical" style={{ width: '100%' }}>
-          {error && <Alert type="error" message={error.message} />}
-          {data && <Alert type="success" message={`Created: ${data.name}`} />}
-          <Input 
-            placeholder="Name" 
-            value={name} 
-            onChange={(e) => setName(e.target.value)} 
+          <Input
+            placeholder="Enter name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
-          <Input 
-            placeholder="Email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-          />
-          <Button type="primary" onClick={handleSubmit} loading={loading}>
-            Create
+          <Button
+            type="primary"
+            loading={submitting}
+            onClick={() => execute({ name, email: `${name.toLowerCase()}@example.com` })}
+          >
+            Create User
           </Button>
+          {data && <Alert type="success" message={`Created user with ID: ${data.id}`} />}
         </Space>
       </Card>
     );

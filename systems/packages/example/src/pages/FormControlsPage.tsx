@@ -150,14 +150,14 @@ function FormControlsPage() {
             ])
             .showSearch(true)
             .allowClear(true)
-            .onChange((value: string) => updateField('country', value))
+            .onChange((value) => updateField('country', Array.isArray(value) ? value[0] : value))
         )
     )
     .add(
       new Section()
         .col(12)
         .add(
-          new Select<string[]>()
+          new Select<string>()
             .key('tags')
             .label('Multiple Select (Tags)')
             .placeholder('Select tags')
@@ -169,7 +169,7 @@ function FormControlsPage() {
               { label: 'Node.js', value: 'nodejs' },
               { label: 'GraphQL', value: 'graphql' },
             ])
-            .onChange((value: string[]) => updateField('tags', value))
+            .onChange((value) => updateField('tags', Array.isArray(value) ? value : [value]))
         )
     );
 

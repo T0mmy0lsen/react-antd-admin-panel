@@ -1,21 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Card, Space, message } from 'antd';
 import { DeleteOutlined, SaveOutlined, EditOutlined } from '@ant-design/icons';
 import { Action } from './Action';
 import { ActionButton } from './ActionButton';
-import { MainProvider } from '../main/MainContext';
 
 const meta: Meta = {
   title: 'Action/ActionButton',
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <MainProvider config={{ pathToApi: '/api' }}>
-        <Story />
-      </MainProvider>
-    ),
-  ],
   parameters: {
     docs: {
       description: {
@@ -35,15 +26,20 @@ export const BasicUsage: StoryObj = {
     const saveAction = new Action()
       .key('save')
       .label('Save')
-      .icon(<SaveOutlined />)
       .buttonType('primary')
-      .callback(() => message.success('Saved!'));
+      .icon(<SaveOutlined />)
+      .callback(async () => {
+        await new Promise((r) => setTimeout(r, 500));
+        message.success('Saved!');
+      });
 
     const editAction = new Action()
       .key('edit')
       .label('Edit')
       .icon(<EditOutlined />)
-      .callback(() => message.info('Edit clicked'));
+      .callback(async () => {
+        message.info('Edit clicked');
+      });
 
     return (
       <Card title="Basic Actions">
@@ -64,15 +60,19 @@ export const WithConfirmation: StoryObj = {
     const deleteAction = new Action()
       .key('delete')
       .label('Delete')
-      .icon(<DeleteOutlined />)
-      .buttonType('primary')
       .danger(true)
+      .icon(<DeleteOutlined />)
       .confirm({
-        content: 'Are you sure you want to delete this item?',
-        title: 'Confirm Delete',
+        title: 'Delete Item',
+        content: 'Are you sure you want to delete this item? This action cannot be undone.',
+        okText: 'Delete',
+        cancelText: 'Cancel',
         danger: true,
       })
-      .callback(() => message.success('Item deleted'));
+      .callback(async () => {
+        await new Promise((r) => setTimeout(r, 500));
+        message.success('Deleted!');
+      });
 
     return (
       <Card title="Action with Confirmation">
@@ -83,22 +83,32 @@ export const WithConfirmation: StoryObj = {
 };
 
 /**
- * Async action with loading state
+ * Code example
  */
-export const AsyncAction: StoryObj = {
+export const CodeExample: StoryObj = {
   render: () => {
-    const asyncAction = new Action()
-      .key('async')
-      .label('Process Data')
-      .buttonType('primary')
-      .callback(async () => {
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        message.success('Processing complete!');
-      });
+    const code = `const deleteAction = new Action()
+  .key('delete')
+  .label('Delete')
+  .danger(true)
+  .icon(<DeleteOutlined />)
+  .confirm({
+    title: 'Delete?',
+    content: 'This cannot be undone.',
+    danger: true,
+  })
+  .callback(async () => {
+    await api.delete(itemId);
+    message.success('Deleted!');
+  });
+
+<ActionButton action={deleteAction} />`;
 
     return (
-      <Card title="Async Action (2 second delay)">
-        <ActionButton action={asyncAction} />
+      <Card title="Action Builder Pattern">
+        <pre style={{ background: '#f5f5f5', padding: 16, overflow: 'auto' }}>
+          {code}
+        </pre>
       </Card>
     );
   },

@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Card } from 'antd';
 import { List } from './index';
-import { Get } from '../http/Get';
-import { MainProvider } from '../main/MainContext';
 
 interface User {
   id: number;
@@ -15,13 +12,6 @@ interface User {
 const meta: Meta = {
   title: 'List/List',
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <MainProvider config={{ pathToApi: 'https://jsonplaceholder.typicode.com' }}>
-        <Story />
-      </MainProvider>
-    ),
-  ],
   parameters: {
     docs: {
       description: {
@@ -33,17 +23,22 @@ const meta: Meta = {
 
 export default meta;
 
+const mockUsers: User[] = [
+  { id: 1, name: 'John Doe', email: 'john@example.com', phone: '555-1234' },
+  { id: 2, name: 'Jane Smith', email: 'jane@example.com', phone: '555-5678' },
+  { id: 3, name: 'Bob Wilson', email: 'bob@example.com', phone: '555-9012' },
+];
+
 /**
  * Basic List with columns
  */
 export const BasicUsage: StoryObj = {
   render: () => {
     const list = new List<User>()
-      .get(() => new Get<User[]>().target('/users'))
       .column('name', 'Name', { sorter: true })
       .column('email', 'Email')
       .column('phone', 'Phone')
-      .footer(true);
+      .dataSource(mockUsers);
 
     return (
       <Card title="User List">
@@ -59,12 +54,14 @@ export const BasicUsage: StoryObj = {
 export const CodeExample: StoryObj = {
   render: () => {
     const code = `const list = new List<User>()
-  .get(() => new Get<User[]>().target('/api/users'))
   .column('name', 'Name', { sorter: true })
   .column('email', 'Email', { width: 200 })
   .column('role', 'Role', (value) => <Tag>{value}</Tag>)
-  .footer(true)
-  .emptyText('No users found');`;
+  .pagination({ pageSize: 20 })
+  .dataSource(users);
+
+// Render
+{list.render()}`;
 
     return (
       <Card title="List Builder Pattern">

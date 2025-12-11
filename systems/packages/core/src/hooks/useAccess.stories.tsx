@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
-import { Card, Tag, Space, Descriptions } from 'antd';
+import React, { useEffect } from 'react';
+import { Card, Tag, Descriptions } from 'antd';
 import { useAccess } from './useAccess';
-import { MainProvider } from '../main/MainContext';
+import { useMain } from '../main/MainContext';
 
 const meta: Meta = {
   title: 'Hooks/useAccess',
@@ -17,6 +17,15 @@ const meta: Meta = {
 };
 
 export default meta;
+
+// Helper to set user for demo purposes
+const SetUser = ({ role, permissions, children }: { role: string; permissions: string[]; children: React.ReactNode }) => {
+  const main = useMain();
+  useEffect(() => {
+    main.User().set({ id: '1', name: 'Demo User', role, permissions });
+  }, [main, role, permissions]);
+  return <>{children}</>;
+};
 
 const AccessDemo = () => {
   const { 
@@ -63,12 +72,9 @@ const AccessDemo = () => {
  */
 export const AdminUser: StoryObj = {
   render: () => (
-    <MainProvider 
-      config={{ pathToApi: '/api' }}
-      initialUser={{ id: '1', name: 'Admin', role: 'admin', permissions: ['users.edit', 'users.delete'] }}
-    >
+    <SetUser role="admin" permissions={['users.edit', 'users.delete']}>
       <AccessDemo />
-    </MainProvider>
+    </SetUser>
   ),
 };
 
@@ -77,11 +83,8 @@ export const AdminUser: StoryObj = {
  */
 export const RegularUser: StoryObj = {
   render: () => (
-    <MainProvider 
-      config={{ pathToApi: '/api' }}
-      initialUser={{ id: '2', name: 'User', role: 'user', permissions: ['users.read'] }}
-    >
+    <SetUser role="user" permissions={['users.read']}>
       <AccessDemo />
-    </MainProvider>
+    </SetUser>
   ),
 };

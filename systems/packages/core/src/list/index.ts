@@ -482,12 +482,13 @@ export class List<T extends object = any> extends BaseBuilder<ListConfig<T>> {
 
 /**
  * ListComponent - React component that handles state for the List builder
+ * Wrapped in React.memo to prevent unnecessary re-renders
  */
 interface ListComponentProps<T extends object> {
   list: List<T>;
 }
 
-function ListComponent<T extends object>({ list }: ListComponentProps<T>): React.ReactElement | null {
+const ListComponent = React.memo(function ListComponent<T extends object>({ list }: ListComponentProps<T>): React.ReactElement | null {
   const config = list.getConfig();
   const [selectedRowKeys, setSelectedRowKeys] = React.useState<React.Key[]>([]);
   const [selectedRows, setSelectedRows] = React.useState<T[]>([]);
@@ -594,19 +595,22 @@ function ListComponent<T extends object>({ list }: ListComponentProps<T>): React
     return cols;
   }, [config.columns, config.actions]);
 
+  // Memoize row selection onChange handler
+  const handleRowSelectionChange = React.useCallback((keys: React.Key[], rows: T[]) => {
+    setSelectedRowKeys(keys);
+    setSelectedRows(rows);
+    config.rowSelection?.onChange?.(keys, rows);
+  }, [config.rowSelection]);
+
   // Handle row selection
   const rowSelection = config.rowSelection ? {
     ...config.rowSelection,
     selectedRowKeys,
-    onChange: (keys: React.Key[], rows: T[]) => {
-      setSelectedRowKeys(keys);
-      setSelectedRows(rows);
-      config.rowSelection?.onChange?.(keys, rows);
-    },
+    onChange: handleRowSelectionChange,
   } : undefined;
 
-  // Render header controls
-  const renderHeader = () => {
+  // Memoize header rendering
+  const headerElement = React.useMemo(() => {
     const header = config.header;
     if (!header) return null;
 
@@ -690,6 +694,7 @@ function ListComponent<T extends object>({ list }: ListComponentProps<T>): React
               },
               allowClear: true,
               style: { width: 200 },
+              'aria-label': 'Search',
             }
           ),
           header.showCreate && React.createElement(
@@ -698,6 +703,7 @@ function ListComponent<T extends object>({ list }: ListComponentProps<T>): React
               type: 'primary',
               icon: React.createElement(PlusOutlined),
               onClick: header.onCreate,
+              'aria-label': header.createLabel ? undefined : 'Create new item',
             },
             header.createLabel || 'Create'
           ),
@@ -706,13 +712,14 @@ function ListComponent<T extends object>({ list }: ListComponentProps<T>): React
             {
               icon: React.createElement(ReloadOutlined),
               onClick: header.onRefresh,
+              'aria-label': 'Refresh list',
             }
           ),
           header.extra,
         ),
       ),
     );
-  };
+  }, [config.header, config.bulkActions, selectedRowKeys, selectedRows, searchValue]);
 
   // Build table props
   const tableProps: TableProps<T> = {
@@ -738,7 +745,7 @@ function ListComponent<T extends object>({ list }: ListComponentProps<T>): React
   return React.createElement(
     React.Fragment,
     {},
-    renderHeader(),
+    headerElement,
     React.createElement(Table, tableProps as any),
   );
-}
+}) as <T extends object>(props: ListComponentProps<T>) => React.ReactElement | null;

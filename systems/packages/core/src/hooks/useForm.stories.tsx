@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
-import { Card, Button, Space, message } from 'antd';
+import { Card, Button, Space, message, Form, Input as AntInput } from 'antd';
 import { useForm } from './useForm';
-import { MainProvider } from '../main/MainContext';
-import { Input as AntInput, Form } from 'antd';
 
 interface FormData {
   name: string;
@@ -13,13 +10,6 @@ interface FormData {
 const meta: Meta = {
   title: 'Hooks/useForm',
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <MainProvider config={{ pathToApi: 'https://jsonplaceholder.typicode.com' }}>
-        <Story />
-      </MainProvider>
-    ),
-  ],
   parameters: {
     docs: {
       description: {
@@ -36,37 +26,46 @@ export default meta;
  */
 export const BasicUsage: StoryObj = {
   render: () => {
-    const { register, handleSubmit, formState, isSubmitting } = useForm<FormData>({
-      post: { target: '/users' },
-      onSuccess: () => message.success('Form submitted!'),
+    const { values, setValue, submit, submitting, errors, isDirty } = useForm<FormData>({
+      initialValues: { name: '', email: '' },
+      onSubmit: async (data) => {
+        await new Promise((r) => setTimeout(r, 1000));
+        message.success(`Submitted: ${data.name}`);
+      },
     });
 
     return (
-      <Card title="User Form">
-        <form onSubmit={handleSubmit}>
-          <Space direction="vertical" style={{ width: '100%' }}>
-            <Form.Item 
-              label="Name" 
-              validateStatus={formState.errors.name ? 'error' : ''}
-              help={formState.errors.name?.message}
-            >
-              <AntInput {...register('name', { required: 'Name is required' })} />
-            </Form.Item>
-            <Form.Item 
-              label="Email"
-              validateStatus={formState.errors.email ? 'error' : ''}
-              help={formState.errors.email?.message}
-            >
-              <AntInput {...register('email', { 
-                required: 'Email is required',
-                pattern: { value: /^[^@]+@[^@]+$/, message: 'Invalid email' }
-              })} />
-            </Form.Item>
-            <Button type="primary" htmlType="submit" loading={isSubmitting}>
+      <Card title="Basic Form">
+        <Form layout="vertical">
+          <Form.Item 
+            label="Name" 
+            validateStatus={errors.name ? 'error' : undefined}
+            help={errors.name?.message}
+          >
+            <AntInput
+              value={values.name}
+              onChange={(e) => setValue('name', e.target.value)}
+              placeholder="Enter name"
+            />
+          </Form.Item>
+          <Form.Item 
+            label="Email"
+            validateStatus={errors.email ? 'error' : undefined}
+            help={errors.email?.message}
+          >
+            <AntInput
+              value={values.email}
+              onChange={(e) => setValue('email', e.target.value)}
+              placeholder="Enter email"
+            />
+          </Form.Item>
+          <Space>
+            <Button type="primary" onClick={submit} loading={submitting}>
               Submit
             </Button>
+            <span>{isDirty ? '(modified)' : ''}</span>
           </Space>
-        </form>
+        </Form>
       </Card>
     );
   },

@@ -85,7 +85,7 @@ function FormControlsPage() {
     ])
         .showSearch(true)
         .allowClear(true)
-        .onChange((value) => updateField('country', value))))
+        .onChange((value) => updateField('country', Array.isArray(value) ? value[0] : value))))
         .add(new Section()
         .col(12)
         .add(new Select()
@@ -100,7 +100,7 @@ function FormControlsPage() {
         { label: 'Node.js', value: 'nodejs' },
         { label: 'GraphQL', value: 'graphql' },
     ])
-        .onChange((value) => updateField('tags', value))));
+        .onChange((value) => updateField('tags', Array.isArray(value) ? value : [value]))));
     // 3. Checkbox Builder Demo
     const checkboxSection = new Section()
         .card({ title: '3. Checkbox Builder' })
